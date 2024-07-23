@@ -16,12 +16,11 @@ class AsociacionController extends Controller
 {
     //
     public function Register(Request $request){
-        //return response()->json(['data' => $request->all() ], 200);
         $validator = Validator::make($request->all(),[
             'name' => ['required', function($attribute, $value, $fail) use ($request ) {
                 $asociation = Asociaciones::where('name' , $request->input('name'))->first();
                 if($asociation){
-                    $fail('Esta asociacion ya fue registrada');
+                    $fail('Esta asociacion ya fue registrada, Inicie sesión porfavor');
                 }
             }],
             'address' => ['required'],
@@ -31,7 +30,6 @@ class AsociacionController extends Controller
         if($validator->fails()){
             return response()->json(['errors' => $validator->errors() ], 422);
         }
-        //return  response()->json( ['message' => 'Va a crear una asociaciónn'] , 200 );   
 
         $asociation = new Asociaciones();
         $asociation->logo               = '';
@@ -68,7 +66,7 @@ class AsociacionController extends Controller
 
             return  response()->json( ['message' => 'Usuario creado correctamente', 'password_tmp' =>$tmp_password  ] , 200 );
         } catch (\Throwable $th) {
-            //throw $th;
+         
 
             return  response()->json( ['message' => 'Ocurrió un error', 'error' => $th ] , 400 );
         }

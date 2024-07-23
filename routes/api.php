@@ -25,8 +25,3 @@ Route::match(['post'], '/gen_token', [UserController::class, 'GenToken'] );
 Route::match(['post'], '/register_asociation', [AsociacionController::class, 'Register'] );
 
 Route::match(['get'], '/demo_mail', [AsociacionController::class, 'SendRegisterMail'] );
-
-
-// Route::get('/user', function (Request $request) {
-//     return 'Primer api consultada';
-//});

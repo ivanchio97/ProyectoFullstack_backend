@@ -39,13 +39,8 @@ class LandingController extends Controller
             $subject    = $request->input('subject');
             $correo     = $request->input('email');
 
-            // try {
                 $this->SendRegisterMail($params, $template, $subject, $correo);
-                //return redirect()->back()->with('success', 'Correo enviado correctamente');
-            // } catch (\Throwable $th) {
-            //     print_r('No se pudo enviar el correo');
-            //     print_r($th);exit;
-            // }
+
         }
 
         return view('landing.registro', $config);

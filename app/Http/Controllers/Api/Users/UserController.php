@@ -91,7 +91,6 @@ class UserController extends Controller
 
     public function Add(Request $request){        
 
-        //$password = Crypt::encryptString($request->input('password'));
         $password = Crypt::encrypt($request->input('password'));
 
         if(!$request->filled('name')){
@@ -111,7 +110,7 @@ class UserController extends Controller
 
             return  response()->json( ['message' => 'Usuario creado correctamente' ] , 200 );
         } catch (\Throwable $th) {
-            //throw $th;
+
 
             return  response()->json( ['message' => 'Ocurrió un error', 'error' => $th ] , 400 );
         }
