@@ -15,11 +15,11 @@ class UserController extends Controller
     public function GenToken(Request $request){
         
         if(!$request->filled('email')){
-            return  response()->json( ['message' => 'Usuario o contraseña incorrecta'] , 400 );   
+            return  response()->json( ['message' => 'Usuario o contraseña incorrectos'] , 400 );   
         }
 
         if(!$request->filled('password')){
-            return  response()->json( ['message' => 'Usuario o contraseña incorrecta'] , 400 );   
+            return  response()->json( ['message' => 'Usuario o contraseña incorrectos'] , 400 );   
         }
 
         $user = User::where('email', $request->input('email'))->first();

@@ -32,7 +32,7 @@ class SendMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Correo de prueba',
+            subject: 'Correo de prueba para envios automáticos',
         );
     }
 
@@ -41,7 +41,6 @@ class SendMail extends Mailable
      */
     public function content(): Content
     {
-        //print_r($this->details);exit;
         return new Content(
             view: $this->template,
             with: $this->details
@@ -49,7 +48,6 @@ class SendMail extends Mailable
     }
 
     public function build(){
-        //å∫dd($this->details);exit;
         return $this->from('mkt@tuin.ai')->view('mails.register');
     }
 
